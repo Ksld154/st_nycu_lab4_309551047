@@ -109,6 +109,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          jarFolder${{ env.jarFileName }}
+          jarFolder/${{ env.jarFileName }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
