@@ -1,3 +1,6 @@
+package com.example;
+
+
 public class Game {
 
     static final String SCISSORS = "scissors";

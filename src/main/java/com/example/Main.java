@@ -1,4 +1,7 @@
+package com.example;
+
 import java.util.Scanner;
+import com.example.Game;
 
 public class Main {
 
