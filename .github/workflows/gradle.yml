@@ -79,7 +79,7 @@ jobs:
       run: ./gradlew assemble
     
     - id: getJarFileName
-      run: echo "::set-output name=jarfile::$(gradle printJarFileName)"
+      run: echo "::set-output name=jarfile::$(gradle printJarFileName | tail -n 3 | head -n 1)"
 
     - name: Archive jar file
       uses: actions/upload-artifact@v2
