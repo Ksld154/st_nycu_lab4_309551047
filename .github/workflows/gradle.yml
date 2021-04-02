@@ -112,7 +112,7 @@ jobs:
         echo "jarFileName=`ls jarFolder`" >> $GITHUB_ENV
 
     - name: Get output from last job
-      run: echo "${{ steps.getJarFileName.outputs.jarfile }}"
+      run: echo "${{ needs.assemble.outputs.jarfile }}"
 
     - name: Release to Github
       uses: softprops/action-gh-release@v1
