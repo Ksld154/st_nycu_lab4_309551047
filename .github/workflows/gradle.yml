@@ -80,3 +80,35 @@ jobs:
       with:
         name: buildJar
         path: build/libs
+
+  release: 
+    needs: [compile, test, assemble]
+    
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Download jar file
+      uses: actions/download-artifact@v2
+      with:
+        name: buildJar
+        path: jarFolder
+    
+    - name: Display structure of downloaded files
+      run: ls -R jarFolder
+
+    - name: Get filename of jar
+      id: get_jar_filename
+      run: |
+        echo "jarFileName=`ls jarFolder`" >> $GITHUB_ENV
+
+    - name: Release to Github
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          jarFolder${{ env.jarFileName }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
