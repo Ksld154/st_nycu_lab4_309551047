@@ -78,5 +78,5 @@ jobs:
     - name: Archive jar file
       uses: actions/upload-artifact@v2
       with:
-        name: jar
+        name: buildJar
         path: build/libs
